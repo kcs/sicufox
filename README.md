@@ -35,9 +35,30 @@ battery should last at least a whole competition in active transmission, while i
 
 ### Hardware specs:
 
-Power source: internal LiIon battery, 7.4V -- 11.1V
-Output power: max 5W
-Active current consumption: 1A
-Battery capacity: 8Ah
-Power down mode: <200µA
+- Power source: internal LiIon battery, 7.4V -- 11.1V
+- Output power: max 5W
+- Active current consumption: 1A
+- Battery capacity: 8Ah
+- Power down mode: <200µA
+
+#### Sleep mode:
+The fox enters sleep mode when no external device or antenna is connected. In sleep mode all transmitter circuits ar powered down, the microcontroller enters into a power saving mode, and power to every other circuit is cut. Only the RTC is working to maintain clock synchronization.
+
+- µC internal RTC shall be used if possible
+
+#### External connector:
+The only connector of the fox is used for connecting the antenna, connecting the configuration interface (via a serial bus), and for charging the internal battery. When nothing attached to the connector, the µC enters sleep mode. If antenna is connected, then µC wakes up and starts transmitting according to the configured cycle. When external power is connected the µC and transmitter remains in sleep mode, but a battery charging circuit activates and starts recharging the battery. When serial interface is connected, the µC wakes up, but all other circuitry remains in power down mode, giving the possibility to send configuration data to be stored into a non-volatile location. Also during serial connection the RTC synchronization shall occur.
+
+A 5 pin waterproof connector shall be used:
+- GND
+- 80m antenna
+- 2m antenna
+- charge / antenna selector
+- serial
+
+#### RF stage:
+
+- 80m: direct frequency synthesis from µC, linera amplifier (controlled gain) and filters for harmonic suppression (according to ANCOM rules), basic antenna tuning support and high swr resistance
+- 2m: IF frequency synthesis with tone modulated CW carrier, superheterodine RF switching and output filter, matched antenna
+- digital circuitry interference isolation
 
