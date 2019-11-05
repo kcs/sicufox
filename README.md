@@ -1,4 +1,4 @@
-# pibfox
+# sicufox
 
 This project implements a fully automatic fox controller for ARDF competitions, capable of running all modes of operations presented in the IARU Region 1 rules for ARDF events, having an easy to use user interface for configuring and safe and easy deployment possibility.
 
@@ -67,3 +67,9 @@ A 5 pin waterproof connector shall be used:
 Block diagram of the system is presented on the figure below:
 
 ![sicufox block diagram](img/block.svg)
+
+The central part of the system is the microcontroller responsible of managing all the RF stages and signal conditioning. It is also able to control the power flow to these stages to achieve various power down modes and disable power consumption of unused parts. The power control is also responsible for charging and monitoring the embedded LiIon battery. Charging is done by connecting an external power source to the i/o connector. The microcontroller can disable power to every component except for the Real-Time Clock which runs continuously from battery power to maintain synchronization of the foxes. Besides this only the connector sensing works in power down mode, which will wake up the microcontroller as needed when external connections are made to the device.
+
+In active state the microcontroller controls a direct signal synthesis module creating the CW modulated carrier for 80m operation or the tone modulated CW intermediate frequency signal which is fed through a frequency changing module (either PLL or superheterodine stage). Radio frequency signals (80m or 2m) are then amplified with a programmable gain (controlled from the microcontroller) and output to the corresponding i/o connector to a matched antenna. The RF stage contains the necessary filtering and optional matching circuits.
+
+The microcontroller is also connected to the i/o connector using a bidirectional serial communication for configuring modes of operation and syncing for the given competitions.
