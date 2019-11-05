@@ -62,3 +62,8 @@ A 5 pin waterproof connector shall be used:
 - 2m: IF frequency synthesis with tone modulated CW carrier, superheterodine RF switching and output filter, matched antenna
 - digital circuitry interference isolation
 
+## System architecture
+
+Block diagram of the system is presented on the figure below:
+
+![sicufox block diagram](img/block.svg)
