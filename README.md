@@ -73,3 +73,40 @@ The central part of the system is the microcontroller responsible of managing al
 In active state the microcontroller controls a direct signal synthesis module creating the CW modulated carrier for 80m operation or the tone modulated CW intermediate frequency signal which is fed through a frequency changing module (either PLL or superheterodine stage). Radio frequency signals (80m or 2m) are then amplified with a programmable gain (controlled from the microcontroller) and output to the corresponding i/o connector to a matched antenna. The RF stage contains the necessary filtering and optional matching circuits.
 
 The microcontroller is also connected to the i/o connector using a bidirectional serial communication for configuring modes of operation and syncing for the given competitions.
+
+## Requirement analysis
+
+To achieve the performance described in the specifications the main components have to fulfill the requirements presented in the following sections. Where possible the best solutions are chosen, with some other possible candidates presented.
+
+### Casing
+
+The fox must be deployed into the nature, usually hidden in forrested areas, so it must resist to various elements possible present in such environment.
+
+- water proofing: the fox is left working unsupervised during the whole competition, when change of weather is a high possibility, facing direct rain and submerging into several centimeters of water shall be expected
+- shock resistance: while the fox is hidden (possibly near a tree or in some holes) it is possible that runners accidentally crash into it, while not observing the actual fox, but aiming for the checkpoint flag, tripping over wires is also in the books, so the case and the connector must be resistant to such forces
+- color: the fox should be camouflaged sufficiently to not distract the runners (especially in sprint and foxoring events, when no flag is used)
+
+Possible solutions:
+
+- electrical junction box
+- dedicated embedded system housing
+
+### Connector
+
+The connector is the single point of contact with the outside world, so it must adhere to the same waterproofing and shock resisting requirements as the casing. A single connection with full waterproof insulation and screw type enclosing shall be used, to minimize failure incidents from external sources.
+
+The connector shall accomodate the following signals:
+
+- antenna connection for 80m
+- antenna connection for 2m
+- ground
+
+the signals for 80m and 2m are coming from different rf stages, to minimize complexity of the filtering and matching circuits, these to are connected independently to the corresponding antenna
+
+- antenna detection
+
+as separate antenna connections are used, the fox should be able to detect which antenna is mounted so it can enable the associated RF stage. 2m antenna is a horizontally polarized omnidirectional antenna
+
+- charging pin
+
+- serial connection
