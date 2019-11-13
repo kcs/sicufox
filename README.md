@@ -86,7 +86,7 @@ The fox must be deployed into the nature, usually hidden in forrested areas, so 
 - shock resistance: while the fox is hidden (possibly near a tree or in some holes) it is possible that runners accidentally crash into it, while not observing the actual fox, but aiming for the checkpoint flag, tripping over wires is also in the books, so the case and the connector must be resistant to such forces
 - color: the fox should be camouflaged sufficiently to not distract the runners (especially in sprint and foxoring events, when no flag is used)
 
-Possible solutions:
+**Possible solutions**:
 
 - electrical junction box
 - dedicated embedded system housing
@@ -110,3 +110,19 @@ as separate antenna connections are used, the fox should be able to detect which
 - charging pin
 
 - serial connection
+
+**Possible solutions**:
+
+- [SP13 type waterproof connectors](doc/SP13.pdf), TME [SP1310/S6](https://www.tme.eu/ro/details/sp1310_s6/conectori-weipu/weipu/sp1310-s6in/), [SP1312/S6](https://www.tme.eu/ro/details/sp1312_s6/conectori-weipu/weipu/)
+
+
+### Signal synthesizer
+
+Direct digital synthesis solutions:
+- AD9833, 12.5MHz signal generation at 25MHz clock, 28 bit frequency registrer, creates sinusoidal, triangle and square waves, various power down modes, TME: [AD9833BRMZ](https://www.tme.eu/ro/details/ad9833brmz/convertor-d-a-circuite-integrate/analog-devices/)
+
+- generating sinusoidal signal directly from microcontroller (needs DAC, DMA, high clock frequency)
+
+### Power control
+
+Battery charging and voltage regulator
